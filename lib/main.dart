@@ -1,13 +1,11 @@
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:my_notes/constants/routes.dart';
 import 'package:my_notes/firebase_options.dart';
 import 'package:my_notes/views/login_view.dart';
 import 'package:my_notes/views/register_view.dart';
 import 'package:my_notes/views/verify_email_view.dart';
-import 'dart:developer' as devtools show log;
-
 
 void main () {
   
@@ -20,9 +18,9 @@ void main () {
       ),
       home: const HomePage(),
       routes: {
-        '/login/' : (context) => const LoginView(),
-        '/register/' : (context) => const RegisterView(),
-        '/notes/' : (context) =>const NotesView(),
+        loginRoute : (context) => const LoginView(),
+        registerRoute : (context) => const RegisterView(),
+        notesRoute : (context) =>const NotesView(),
       },
     )
     );
@@ -75,7 +73,11 @@ class _NotesViewState extends State<NotesView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Main UI'),
+        title: const Text('Main UI',
+        style: TextStyle(
+          fontSize: 23,
+          ),
+          ),
         actions:[
           PopupMenuButton<MenuAction>(
             onSelected: (value)async{
@@ -85,7 +87,7 @@ class _NotesViewState extends State<NotesView> {
               if(shouldLogout){
               await FirebaseAuth.instance.signOut();
               Navigator.of(context).pushNamedAndRemoveUntil(
-                '/login/' , (_) => false
+                loginRoute , (_) => false,
                 );
               }
               
@@ -104,7 +106,10 @@ class _NotesViewState extends State<NotesView> {
       ),
         
       
-      body: const Text('Hello World'),
+      body: const Text('Hello World',
+      style: TextStyle(
+        fontSize: 20,
+      )),
     );
   }
 }

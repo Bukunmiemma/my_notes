@@ -45,7 +45,7 @@ class HomePage extends StatelessWidget {
               if(user.emailVerified) {
                 return const NotesView();
                 } else{
-                  return const VerifyEmailView();
+                  return const  VerifyEmailView();
               }
 
             } else{
@@ -107,9 +107,7 @@ class _NotesViewState extends State<NotesView> {
         
       
       body: const Text('Hello World',
-      style: TextStyle(
-        fontSize: 20,
-      )),
+      ),
     );
   }
 }

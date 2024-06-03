@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:my_notes/constants/routes.dart';
 import 'package:my_notes/enums/menu_action.dart';
@@ -30,7 +29,7 @@ class _NotesViewState extends State<NotesView> {
                   final shouldLogout = await showLogOutDialog(context);
                   if (shouldLogout) {
                     await AuthService.firebase().logOut;
-          
+
                     Navigator.of(context).pushNamedAndRemoveUntil(
                       loginRoute,
                       (_) => false,
@@ -41,7 +40,9 @@ class _NotesViewState extends State<NotesView> {
             itemBuilder: (context) {
               return const [
                 PopupMenuItem<MenuAction>(
-                    value: MenuAction.logout, child: Text('Log Out'),),
+                  value: MenuAction.logout,
+                  child: Text('Log Out'),
+                ),
               ];
             },
           ),
